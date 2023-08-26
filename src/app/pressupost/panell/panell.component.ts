@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./panell.component.css']
 })
 export class PanellComponent {
-  public title = 'hola que tal estas';
 
 }

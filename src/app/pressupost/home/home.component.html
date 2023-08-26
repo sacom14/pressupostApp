@@ -1,16 +1,28 @@
-<div>
-  <p>¿Qué quieres hacer?</p>
-  <div>
-    <input type="checkbox"><label class="mx-1">Una página web (500 €)</label>
+<div class="d-flex flex-column vh-100 justify-content-center align-items-center">
+  <p>Quins serveis vols??</p>
+  <br>
+  <div class="col-5">
+    <ul class="list-group">
+      <li *ngFor="let priceOfService of priceOfServices.priceOfServices" class="list-group-item"><input type="checkbox" (click)="addPrice(priceOfService.price, priceOfService)" class="form-check-input">
+        {{priceOfService.name}} ({{priceOfService.price}} €)
+      </li>
+    </ul>
+    <br>
+    <div>
+      <p class="d-flex justify-content-center">Preu: {{totalPrice}} €</p>
+    </div>
+  </div>
+  <!-- <div>
+    <input type="checkbox" (click)="addPrice(500, true)"><label class="mx-1">{{priceArray.name}}</label>
   </div>
   <div>
-    <input type="checkbox"><label class="mx-1"> Una consultoria SEO (300 €)</label>
+    <input type="checkbox" (click)="addPrice(300, true)"><label class="mx-1"> Una consultoria SEO (300 €)</label>
   </div>
   <div>
-    <input type="checkbox"><label class="mx-1"> Una campanya de Google Ads (200 €)</label>
+    <input type="checkbox" (click)="addPrice(200, true)"><label class="mx-1"> Una campanya de Google Ads (200 €)</label>
   </div>
-    <p class="col-12"> preu: </p>
-</div>
+    <p class="col-12"> preu: {{totalPrice}} </p>
+</div> -->
 <br>
 
 <app-home-panell></app-home-panell>
