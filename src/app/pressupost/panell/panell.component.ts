@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TotalBudgetPriceService } from './../services/totalBudgetPrice.service';
-import { PriceOfServicesInterface } from '../interface/price.interface';
+
 
 @Component({
   selector: 'app-home-panell',
@@ -28,13 +28,11 @@ export class PanellComponent {
     this.myForm.markAllAsTouched();
 
     if (this.myForm.valid) {
-      const pages = this.myForm.get('page')!.value;
-      const lenguages = this.myForm.get('lenguage')!.value;
+      const pages:number = this.myForm.get('page')!.value;
+      const lenguages:number = this.myForm.get('lenguage')!.value;
 
-      // this.totalWebPrice = pages*lenguages*30;
-      // debugger
       this.totalBudgetPriceService.addtTotalWebPrice(pages, lenguages);
-      // this.totalBudgetPriceService.getTotalBudgetPrice(pages, lenguages);
+
     } else{
       this.totalBudgetPriceService.addtTotalWebPrice(0, 0);
     }

@@ -14,6 +14,7 @@ export class HomeComponent {
   public totalPrice: number = 0;
   public showPanell: boolean = false;
   public webSelectedService = 'Fer una pàgina web';
+  public webPrice:number = this.totalServicePrice.totalWebPrice;
 
 //esto es para que se actualice el precio del panel a tiempo real
   get totalBudgetPrice():number{
@@ -22,8 +23,6 @@ export class HomeComponent {
 
 
   constructor(public priceOfServices: PriceOfServicesService, private totalServicePrice: TotalBudgetPriceService) { }
-
-
 
   addPrice(price: number, selected: PriceOfServicesInterface) {
 
@@ -44,6 +43,9 @@ export class HomeComponent {
 
     if (this.showPanell) {
       this.showPanell = false;
+      debugger
+      this.totalServicePrice.totalWebPrice = 0;
+      this.totalServicePrice.getTotalBudgetPrice();
       return;
     }
     this.showPanell = true;
