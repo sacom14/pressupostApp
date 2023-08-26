@@ -14,7 +14,6 @@ export class HomeComponent {
   public totalPrice: number = 0;
   public showPanell: boolean = false;
   public webSelectedService = 'Fer una pàgina web';
-  public webPrice:number = this.totalServicePrice.totalWebPrice;
 
 //esto es para que se actualice el precio del panel a tiempo real
   get totalBudgetPrice():number{

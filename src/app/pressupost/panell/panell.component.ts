@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,13 +18,11 @@ export class PanellComponent {
   public showPanell: boolean = false;
 
   public myForm: FormGroup = this.fb.group({
-    page: ['', [Validators.required, Validators.min(1), Validators.max(10)]],
-    lenguage: ['', [Validators.required, Validators.min(1)]]
+    page: ['', [Validators.required, Validators.min(1), Validators.max(20)]],
+    lenguage: ['', [Validators.required, Validators.min(1), Validators.max(20)]]
   })
 
   constructor(private fb: FormBuilder, private totalBudgetPriceService: TotalBudgetPriceService) { }
-
-
   onSubmit() {
     this.myForm.markAllAsTouched();
 
@@ -37,4 +36,21 @@ export class PanellComponent {
       this.totalBudgetPriceService.addtTotalWebPrice(0, 0);
     }
   }
+
+  increaseValue(fieldName: string){
+    const field = this.myForm.get(fieldName);
+    if(field){
+      const currentValue = field.value;
+      field.setValue(Math.min(currentValue + 1, 20));
+    }
+  }
+
+  decraseValue(fieldName:string){
+    const field = this.myForm.get(fieldName);
+    if(field){
+      const currentValue = field.value;
+      field.setValue(Math.max(currentValue -1,1));
+    }
+  }
+
 }
