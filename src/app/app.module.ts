@@ -13,7 +13,7 @@ import { PressupostModule } from './pressupost/pressupost.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PressupostModule
+    PressupostModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

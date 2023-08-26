@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
-import { PriceOfServicesService } from '../services/price.service';
+import { PriceOfServicesService } from '../services/priceOfServices.service';
 import { PriceOfServicesInterface } from '../interface/price.interface';
+import { TotalBudgetPriceService } from '../services/totalBudgetPrice.service';
 
 
 @Component({
@@ -11,8 +12,18 @@ import { PriceOfServicesInterface } from '../interface/price.interface';
 })
 export class HomeComponent {
   public totalPrice: number = 0;
+  public showPanell: boolean = false;
+  public webSelectedService = 'Fer una pàgina web';
 
-  constructor(public priceOfServices: PriceOfServicesService) { }
+//esto es para que se actualice el precio del panel a tiempo real
+  get totalBudgetPrice():number{
+    return this.totalServicePrice.getTotalBudgetPrice();
+  }
+
+
+  constructor(public priceOfServices: PriceOfServicesService, private totalServicePrice: TotalBudgetPriceService) { }
+
+
 
   addPrice(price: number, selected: PriceOfServicesInterface) {
 
@@ -23,7 +34,19 @@ export class HomeComponent {
       this.totalPrice += price;
       selected.active = true;
     }
-    console.log(this.totalPrice);
+
+    this.totalServicePrice.addTotalServicePrice(this.totalPrice);
+  }
+
+  selectedService(service: PriceOfServicesInterface) {
+    // service:PriceOfServicesInterface
+    if (this.webSelectedService !== service.name) return;
+
+    if (this.showPanell) {
+      this.showPanell = false;
+      return;
+    }
+    this.showPanell = true;
   }
 
 }
