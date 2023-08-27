@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { HomeComponent } from './pressupost/home/home.component';
+import { WelcomeComponent } from './pressupost/welcome/welcome.component';
 
 const routes: Routes = [
-  {path:'' , component: AppComponent},
-  {path: 'home', component: HomeComponent}
+
+  {path: 'welcome', component: WelcomeComponent},
+  {path: 'home', component: HomeComponent},
+  {path: '**', redirectTo: 'welcome'}
+
 ];
 
 @NgModule({

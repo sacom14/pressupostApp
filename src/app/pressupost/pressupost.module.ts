@@ -4,20 +4,24 @@ import { CommonModule } from '@angular/common';
 
 import { HomeComponent } from './home/home.component';
 import { PanellComponent } from './panell/panell.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    PanellComponent
+    PanellComponent,
+    WelcomeComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
-    PanellComponent
+    PanellComponent,
   ]
 })
 export class PressupostModule { }

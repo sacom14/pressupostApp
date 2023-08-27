@@ -15,8 +15,6 @@ export class HomeComponent {
   public showPanell: boolean = false;
   public webSelectedService = 'Fer una pàgina web';
 
-  public showCalculator:boolean = false;
-
 //esto es para que se actualice el precio del panel a tiempo real
   get totalBudgetPrice():number{
     return this.totalServicePrice.getTotalBudgetPrice();
@@ -50,10 +48,6 @@ export class HomeComponent {
       return;
     }
     this.showPanell = true;
-  }
-
-  goToCalculator():void{
-    this.showCalculator = true;
   }
 
 }
