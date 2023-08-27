@@ -12,5 +12,6 @@ export class WelcomeComponent {
   goToCalculator():void{
     this.showCalculator = true;
   }
+  
 
 }

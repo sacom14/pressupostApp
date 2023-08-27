@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PanellComponent } from './panell/panell.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RouterModule } from '@angular/router';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HomeComponent,
     PanellComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,

@@ -7,10 +7,11 @@
     <br>
     <div>
       <ul class="list-group shadow">
-        <li *ngFor="let priceOfService of priceOfServices.priceOfServices; let i = index" class="list-group-item"><input
-            type="checkbox" (click)="addPrice(priceOfService.price, priceOfService)"
-            (click)="selectedService(priceOfService)" class="form-check-input">
-          {{priceOfService.name}} ({{priceOfService.price}} €)
+        <li *ngFor="let priceOfService of priceOfServices.priceOfServices; let i = index"
+        class="list-group-item">
+        <input type="checkbox" (click)="addPrice(priceOfService.price, priceOfService)"
+            (click)="selectedService(priceOfService)"
+            class="form-check-input">{{priceOfService.name}} ({{priceOfService.price}} €)
           <div *ngIf="i===0 && showPanell">
             <app-home-panell class="container"></app-home-panell>
           </div>

@@ -52,5 +52,4 @@ export class PanellComponent {
       field.setValue(Math.max(currentValue -1,1));
     }
   }
-
 }
