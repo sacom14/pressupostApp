@@ -1,7 +1,7 @@
 <!-- Calculadora -->
 <div class="vh-100 d-flex justify-content-center align-items-center">
   <div class="border  shadow rounded rounder-5 p-5 bg-danger-subtle row col-12">
-    <div class="d-flex flex-column  justify-content-center align-items-center row col-6">
+    <div class="d-flex flex-column  justify-content-center align-items-center col-6">
       <h4 class="text-center">Quins serveis vols??</h4>
       <br>
       <div>
@@ -19,7 +19,6 @@
         <div class="d-flex justify-content-center align-items-center">
           <p>Preu: {{totalBudgetPrice}} €</p>
         </div>
-        <hr>
 
         <!-- inputs de nom pressupost i client -->
         <div *ngIf="!showButtonForBack">
@@ -47,15 +46,16 @@
     </div>
 
     <!-- Llista de pressupost -->
-    <div class="d-flex flex-column align-items-center row col-6">
+    <div class="d-flex flex-column align-items-center col-6">
       <h4 class="text-center">Llista de pressupost</h4>
       <br>
-      <app-home-bugdet-list></app-home-bugdet-list>
+      <app-home-budget-list></app-home-budget-list>
     </div>
     <div>
+      <hr>
       <!-- Botó per tornar a la pàgina welcome -->
       <div class="d-flex justify-content-center" *ngIf="showButtonForBack">
-        <button class="btn bg-warning-subtle" routerLink="/welcome">Enrere</button>
+        <button class="btn bg-warning-subtle" routerLink="/welcome">Tornar enrere</button>
       </div>
       <!-- Botó per guardar el prssupost -->
       <div class="d-flex justify-content-center mt-3" *ngIf="!showButtonForBack">

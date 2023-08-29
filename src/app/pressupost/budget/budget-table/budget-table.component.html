@@ -1,0 +1,24 @@
+<!-- <div *ngIf="budgets.length === 0; else table" class="alert alert-warning text-center">Encara no hi ha cap pressupost guardat</div> -->
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Pressupost</th>
+        <th>Client/a</th>
+        <th>Serveis</th>
+        <th>Preu final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let budget of budgets; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{budget.nameOfBudget}}</td>
+        <td>{{budget.clientName}}</td>
+        <td>{{budget.serveis}}</td>
+        <td>{{budget.totalBudget}} €</td>
+      </tr>
+    </tbody>
+  </table>
+

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BugdetListComponent } from './bugdet-list.component';
+import { BugdetListComponent } from './budget-list.component';
 
 describe('BugdetListComponent', () => {
   let component: BugdetListComponent;
