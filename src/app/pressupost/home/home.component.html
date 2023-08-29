@@ -22,7 +22,7 @@
         <p>Preu: {{totalBudgetPrice}} €</p>
       </div>
 
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center" *ngIf="showButtonForBack">
         <button class="btn bg-warning-subtle"  routerLink="/welcome">Enrere</button>
       </div>
     </div>

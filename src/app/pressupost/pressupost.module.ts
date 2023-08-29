@@ -6,7 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { PanellComponent } from './panell/panell.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RouterModule } from '@angular/router';
-import { ModalComponent } from './modal/modal.component';
+import { PageModalComponent } from './modal/page-modal/page-modal.component';
+import { LenguageModalComponent } from './modal/lenguage-modal/lenguage-modal.component';
+
 
 
 
@@ -15,7 +17,9 @@ import { ModalComponent } from './modal/modal.component';
     HomeComponent,
     PanellComponent,
     WelcomeComponent,
-    ModalComponent
+    PageModalComponent,
+    LenguageModalComponent,
+
   ],
   imports: [
     CommonModule,
