@@ -1,30 +1,57 @@
-
 <!-- Calculadora -->
 <div class="vh-100 d-flex justify-content-center align-items-center">
-<div class="border  shadow rounded rounder-5 p-5 bg-danger-subtle">
-  <div class="d-flex flex-column  justify-content-center align-items-center">
-    <h4>Quins serveis vols??</h4>
-    <br>
-    <div>
-      <ul class="list-group shadow">
-        <li *ngFor="let priceOfService of priceOfServices.priceOfServices; let i = index"
-        class="list-group-item">
-        <input type="checkbox" (click)="addPrice(priceOfService.price, priceOfService)"
-            (click)="selectedService(priceOfService)"
-            class="form-check-input">{{priceOfService.name}} ({{priceOfService.price}} €)
-          <div *ngIf="i===0 && showPanell">
-            <app-home-panell class="container"></app-home-panell>
-          </div>
-        </li>
-      </ul>
+  <div class="border  shadow rounded rounder-5 p-5 bg-danger-subtle">
+    <div class="d-flex flex-column  justify-content-center align-items-center">
+      <h4>Quins serveis vols??</h4>
       <br>
-      <div class="d-flex justify-content-center align-items-center">
-        <p>Preu: {{totalBudgetPrice}} €</p>
-      </div>
+      <div>
+        <ul class="list-group shadow">
+          <li *ngFor="let priceOfService of priceOfServices.priceOfServices; let i = index" class="list-group-item">
+            <input type="checkbox" (click)="addPrice(priceOfService.price, priceOfService)"
+              (click)="selectedService(priceOfService)" class="form-check-input"> {{priceOfService.name}}
+            ({{priceOfService.price}} €)
+            <div *ngIf="i===0 && showPanell">
+              <app-home-panell class="container"></app-home-panell>
+            </div>
+          </li>
+        </ul>
+        <br>
+        <div class="d-flex justify-content-center align-items-center">
+          <p>Preu: {{totalBudgetPrice}} €</p>
+        </div>
+        <hr>
 
-      <div class="d-flex justify-content-center" *ngIf="showButtonForBack">
-        <button class="btn bg-warning-subtle"  routerLink="/welcome">Enrere</button>
+        <!-- Botó per tornar a la pàgina welcome -->
+        <div class="d-flex justify-content-center" *ngIf="showButtonForBack">
+          <button class="btn bg-warning-subtle" routerLink="/welcome">Enrere</button>
+        </div>
+
+        <!-- inputs de nom pressupost i client -->
+        <div *ngIf="!showButtonForBack">
+          <form class="form-group bg-primary p-3 rounded rounded-3 bg-white shadow">
+            <div class="row align-items-center p-1">
+              <div class="col-12 col-md-6">
+                <label class="form-label">Nom del pressupost:</label>
+              </div>
+              <div class="col-12 col-md-6 d-flex">
+                <input type="text" class="form-control"
+                  formControlName="budgetName" placeholder="pressupost">
+              </div>
+            </div>
+            <div class="row align-items-center p-1">
+              <div class="col-12 col-md-6">
+                <label class="form-label">Nom del client/a:</label>
+              </div>
+              <div class="col-12 col-md-6 d-flex">
+                <input type="text" class="form-control"
+                  formControlName="budgetName" placeholder="nom del client/a">
+              </div>
+            </div>
+          </form>
+          <div class="d-flex justify-content-center mt-3">
+            <button class="btn bg-warning-subtle" type="submit">Guardar pressupost:</button>
+          </div>
+        </div>
       </div>
     </div>
-</div>
-</div>
+  </div>

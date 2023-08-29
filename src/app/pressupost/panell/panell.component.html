@@ -5,7 +5,7 @@
         <label class="form-label">Número de pàgines:</label>
       </div>
       <div class="col-12 col-md-7 d-flex">
-        <button class="btn btn-danger mx-1 fw-bolder" (click)="decraseValue('page')">-</button> <input type="number" class="form-control"
+        <button class="btn btn-danger mx-1 fw-bolder" (click)="decraseValue('page')">-</button> <input type="number" class="form-control" placeholder="1-20"
           formControlName="page" min="1" max="20"><button class="btn btn-success mx-1 fw-bolder" (click)="increaseValue('page')">+</button>
           <app-home-panell-page-modal></app-home-panell-page-modal>
       </div>
@@ -16,7 +16,7 @@
         <label class="form-label">Número d'idiomes:</label>
       </div>
       <div class="col-12 col-md-7 d-flex">
-        <button class="btn btn-danger mx-1 fw-bolder" (click)="decraseValue('lenguage')" >-</button><input type="number" class="form-control"
+        <button class="btn btn-danger mx-1 fw-bolder" (click)="decraseValue('lenguage')" >-</button><input type="number" class="form-control" placeholder="1-20"
           formControlName="lenguage" min="1" max="20"><button class="btn btn-success mx-1 fw-bolder" (click)="increaseValue('lenguage')">+</button>
           <app-home-panell-lenguages-modal></app-home-panell-lenguages-modal>
       </div>
