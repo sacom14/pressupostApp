@@ -11,6 +11,7 @@ import { PanellComponent } from './panell/panell.component';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { BudgetTableComponent } from './budget/budget-table/budget-table.component';
+import { SaveFormComponent } from './save-form/save-form.component';
 
 
 
@@ -23,6 +24,7 @@ import { BudgetTableComponent } from './budget/budget-table/budget-table.compone
     PanellComponent,
     WelcomeComponent,
     BudgetTableComponent,
+    SaveFormComponent
 
   ],
   imports: [

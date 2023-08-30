@@ -21,27 +21,7 @@
         </div>
 
         <!-- inputs de nom pressupost i client -->
-        <div *ngIf="!showButtonForBack">
-          <form class="form-group bg-primary p-3 rounded rounded-3 bg-white shadow">
-            <div class="row align-items-center p-1">
-              <div class="col-12 col-md-6">
-                <label class="form-label">Nom del pressupost:</label>
-              </div>
-              <div class="col-12 col-md-6 d-flex">
-                <input type="text" class="form-control" formControlName="budgetName" placeholder="pressupost">
-              </div>
-            </div>
-            <div class="row align-items-center p-1">
-              <div class="col-12 col-md-6">
-                <label class="form-label">Nom del client/a:</label>
-              </div>
-              <div class="col-12 col-md-6 d-flex">
-                <input type="text" class="form-control" formControlName="budgetName" placeholder="nom del client/a">
-              </div>
-            </div>
-          </form>
-
-        </div>
+        <app-home-save-form *ngIf="!showButtonForBack"></app-home-save-form>
       </div>
     </div>
 
@@ -52,14 +32,10 @@
       <app-home-budget-list></app-home-budget-list>
     </div>
     <div>
-      <hr>
+      <hr *ngIf="showButtonForBack">
       <!-- Botó per tornar a la pàgina welcome -->
       <div class="d-flex justify-content-center" *ngIf="showButtonForBack">
         <button class="btn bg-warning-subtle" routerLink="/welcome">Tornar enrere</button>
-      </div>
-      <!-- Botó per guardar el prssupost -->
-      <div class="d-flex justify-content-center mt-3" *ngIf="!showButtonForBack">
-        <button class="btn bg-warning-subtle" type="submit">Guardar pressupost</button>
       </div>
     </div>
 
