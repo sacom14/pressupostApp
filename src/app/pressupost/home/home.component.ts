@@ -44,7 +44,6 @@ export class HomeComponent {
 
     if (this.showPanell) {
       this.showPanell = false;
-      debugger
       this.totalServicePrice.totalWebPrice = 0;
       this.totalServicePrice.getTotalBudgetPrice();
       return;

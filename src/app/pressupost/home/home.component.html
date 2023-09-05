@@ -1,7 +1,7 @@
 <!-- Calculadora -->
 <div class="vh-100 d-flex justify-content-center align-items-center">
   <div class="border  shadow rounded rounder-5 p-5 bg-danger-subtle row col-12">
-    <div class="d-flex flex-column  justify-content-center align-items-center col-6">
+    <div class="d-flex flex-column  justify-content-center align-items-center col-12 col-md-6">
       <h4 class="text-center">Quins serveis vols??</h4>
       <br>
       <div>
@@ -26,10 +26,10 @@
     </div>
 
     <!-- Llista de pressupost -->
-    <div class="d-flex flex-column align-items-center col-6">
+    <div class="d-flex flex-column align-items-center col-md-6 mt-3 mt-md-0">
       <h4 class="text-center">Llista de pressupost</h4>
       <br>
-      <app-home-budget-list></app-home-budget-list>
+      <app-home-budget-list-table ></app-home-budget-list-table>
     </div>
     <div>
       <hr *ngIf="showButtonForBack">

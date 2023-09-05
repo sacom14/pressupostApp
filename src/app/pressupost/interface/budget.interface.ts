@@ -1,6 +1,6 @@
 export interface BudgetInterface{
   nameOfBudget:string;
-  clientName:string;
+  nameOfClient:string;
   serveis: string[];
   totalBudget: number;
 }

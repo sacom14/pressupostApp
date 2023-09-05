@@ -12,10 +12,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let budget of budgets; let i = index">
+      <tr *ngFor="let budget of budgetList; let i = index">
         <td>{{i+1}}</td>
         <td>{{budget.nameOfBudget}}</td>
-        <td>{{budget.clientName}}</td>
+        <td>{{budget.nameOfClient}}</td>
         <td>{{budget.serveis}}</td>
         <td>{{budget.totalBudget}} €</td>
       </tr>
