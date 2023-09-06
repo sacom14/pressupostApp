@@ -1,6 +1,11 @@
 <div *ngIf="budgetList.length === 0; else table" class="alert alert-warning text-center">Encara no hi ha cap pressupost guardat</div>
 
 <ng-template #table>
+  <app-home-budgetTable-searchBox
+  class="m-1"
+  (onValue)="onSearchTermChange($event)"
+  placeholder="Buscar per nom del pressupost">
+</app-home-budgetTable-searchBox>
   <div class="col text-center">
     <button class="btn btn-light m-2" (click)="aphabeticalOrder()">Ordre alfabètic</button>
     <button class="btn btn-light m-2" (click)="dataOrder()">Ordre per data</button>

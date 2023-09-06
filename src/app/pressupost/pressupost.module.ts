@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { BudgetTableComponent } from './budget/budget-table/budget-table.component';
 import { SaveFormComponent } from './save-form/save-form.component';
+import { BudgetTableSearchBoxComponent } from '../shared/search-box/search-box.component';
 
 
 
@@ -22,7 +23,8 @@ import { SaveFormComponent } from './save-form/save-form.component';
     PanellComponent,
     WelcomeComponent,
     BudgetTableComponent,
-    SaveFormComponent
+    SaveFormComponent,
+    BudgetTableSearchBoxComponent
 
   ],
   imports: [

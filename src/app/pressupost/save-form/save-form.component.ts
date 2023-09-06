@@ -53,8 +53,6 @@ export class SaveFormComponent {
         date: actuallyDate
       };
 
-      console.log(newBudgetClient.date);
-
       //Guardar los datos en el servicio
       this.saveBudgetAndClientName.saveBudgetData([newBudgetClient]);
 
