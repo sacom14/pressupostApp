@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
-import { SaveBudgetService } from '../services/saveBudget.service';
 import { BudgetInterface } from '../interface/budget.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SaveFormInterface } from '../interface/saveForm.interface';
 import { SaveBudgetAndClientNameService } from '../services/save-budget-and-client-name.service';
 import { TotalBudgetPriceService } from '../services/totalBudgetPrice.service';
 
@@ -21,11 +19,10 @@ export class SaveFormComponent {
   })
 
   //guardamos los nuevos nombres de presupuesto y nombres de cliente
-  @Output() newBudgetAndClientNameEvent = new EventEmitter<SaveFormInterface[]>()
+  public newBudgetAndClientName: BudgetInterface[] = [];
+  public totalPriceOfBudget: number[] = [];
 
-  public newBudgetAndClientName: SaveFormInterface[]=[];
-  public totalPriceOfBudget: number[]=[];
-
+  @Output() newBudgetAndClientNameEvent = new EventEmitter<BudgetInterface[]>()
 
   // @Output()
   // public onNewBudget: EventEmitter<BudgetInterface> = new EventEmitter
@@ -37,44 +34,40 @@ export class SaveFormComponent {
   //   totalBudget: 0
   // }
 
-  constructor (
-    private saveBudgetAndClientName:SaveBudgetAndClientNameService,
-    private fb:FormBuilder,
-    private totalServicePrice:TotalBudgetPriceService
-    ){}
+  constructor(
+    private saveBudgetAndClientName: SaveBudgetAndClientNameService,
+    private fb: FormBuilder,
+    private totalServicePrice: TotalBudgetPriceService
+  ) { }
 
-  saveBudget(){
-    if(this.myForm.valid){
-      const budgetName:string = this.myForm.get('budgetName')?.value;
-      const clientName:string = this.myForm.get('clientName')?.value;
+  saveBudget() {
+    if (this.myForm.valid) {
+      const budgetName: string = this.myForm.get('budgetName')?.value;
+      const clientName: string = this.myForm.get('clientName')?.value;
       // const serveis: string[]
-      const totalPrice:number = this.totalServicePrice.getTotalBudgetPrice().valueOf();
+      const totalPrice: number = this.totalServicePrice.getTotalBudgetPrice().valueOf();     //Guardar el precio final en el array
 
       //agregar el objeto al array newBudgetAndCleintName
-      const newBudgetClient: SaveFormInterface = {
+      const newBudgetClient: BudgetInterface = {
         nameOfBudget: budgetName,
         nameOfClient: clientName,
         serveis: [],
-        price: totalPrice
+        totalBudget: totalPrice
       };
-      //Agregar el objeto al array newBuget...
-      this.newBudgetAndClientName.push(newBudgetClient);
-
-      //Guardar el precio final en el array
-
 
       //Guardar los datos en el servicio
-      this.saveBudgetAndClientName.saveBudgetData(this.newBudgetAndClientName);
+      this.saveBudgetAndClientName.saveBudgetData([newBudgetClient]);
 
-      //emitir evento
-      this.newBudgetAndClientNameEvent.emit(this.newBudgetAndClientName);
+      //Agregar el objeto de newBudgetClient al array newBugetAnd...
+      this.newBudgetAndClientName.push(newBudgetClient);
 
       //limpiar el formulario después de guardar
       this.myForm.reset()
-    }
 
-    console.log(this.totalPriceOfBudget);
-    console.log(this.newBudgetAndClientName);
+      //emitir evento
+      this.newBudgetAndClientNameEvent.emit(this.saveBudgetAndClientName.getSavedBudgets());
+
+    }
   }
   // emitBudget():void{
   //   this.onNewBudget.emit(this.budget);

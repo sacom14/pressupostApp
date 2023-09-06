@@ -1,34 +1,25 @@
-import { ReactiveFormsModule } from '@angular/forms';
-import { Injectable } from '@angular/core';
-import { SaveFormInterface } from '../interface/saveForm.interface';
+import { EventEmitter, Injectable } from '@angular/core';
+import { BudgetInterface } from '../interface/budget.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SaveBudgetAndClientNameService {
 
-  private savedBudgetsAndClientsName: SaveFormInterface[]=[{
-    nameOfBudget: 'primer cliente prubea nombre presupuesto',
-    nameOfClient: 'primer cliente nombre prueba',
-    serveis: ['pagina web', 'control SEO', 'prueba'],
-    price: 1000
+  private savedBudgetsAndClientsName: BudgetInterface[]=[];
+  public dataChanged: EventEmitter<void> = new EventEmitter<void>(); //emitter para cada cambio de datos
 
-  },{
-    nameOfBudget: 'primer cliente prubea nombre presupuesto',
-    nameOfClient: 'primer cliente nombre prueba',
-    serveis: ['pagina web', 'control SEO', 'prueba'],
-    price: 1000
-  }];
 
   constructor() { }
 
   //guardar los datos localmente en el servicio
-  saveBudgetData(data: SaveFormInterface[]):void {
-    this.savedBudgetsAndClientsName = data;
+  saveBudgetData(newData: BudgetInterface[]):void {
+    this.savedBudgetsAndClientsName.push(...newData);
+    this.notifyDataChanged();
   }
 
   //recuperar los datos almacenados
-  getSavedBudgets(): SaveFormInterface[]{
+  getSavedBudgets(): BudgetInterface[]{
     return this.savedBudgetsAndClientsName;
   }
 
@@ -47,6 +38,11 @@ export class SaveBudgetAndClientNameService {
       return this.savedBudgetsAndClientsName[index].nameOfClient;
     }
     return '';
+  }
+
+  //notificacion de cambios a los que pueden acceder a este metodo
+  notifyDataChanged(){
+    this.dataChanged.emit()
   }
 
 }
