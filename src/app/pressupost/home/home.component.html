@@ -8,7 +8,10 @@
         <ul class="list-group shadow">
           <li *ngFor="let priceOfService of priceOfServices.priceOfServices; let i = index" class="list-group-item">
             <input type="checkbox" (click)="addPrice(priceOfService.price, priceOfService)"
-              (click)="selectedService(priceOfService)" class="form-check-input"> {{priceOfService.name}}
+            (click)="selectedWebService(priceOfService)" class="form-check-input"
+            [checked]="isSelected(priceOfService.name)"
+            (change)="toggleSelection(priceOfService.name)">
+              {{priceOfService.name}}
             ({{priceOfService.price}} €)
             <div *ngIf="i===0 && showPanell">
               <app-home-panell class="container"></app-home-panell>
@@ -19,9 +22,8 @@
         <div class="d-flex justify-content-center align-items-center">
           <p>Preu: {{totalBudgetPrice}} €</p>
         </div>
-
         <!-- inputs de nom pressupost i client -->
-        <app-home-save-form *ngIf="!showButtonForBack"></app-home-save-form>
+        <app-home-save-form *ngIf="!showButtonForBack" [selectionServices]="selectionServices"></app-home-save-form>
       </div>
     </div>
 

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
-import { BugdetListComponent } from './budget/budget-list/budget-list.component';
 import { HomeComponent } from './home/home.component';
 import { LenguageModalComponent } from './modal/lenguage-modal/lenguage-modal.component';
 import { PageModalComponent } from './modal/page-modal/page-modal.component';
@@ -17,7 +16,6 @@ import { SaveFormComponent } from './save-form/save-form.component';
 
 @NgModule({
   declarations: [
-    BugdetListComponent,
     HomeComponent,
     LenguageModalComponent,
     PageModalComponent,

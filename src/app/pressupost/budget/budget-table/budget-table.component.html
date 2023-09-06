@@ -1,6 +1,6 @@
-<!-- <div *ngIf="budgets.length === 0; else table" class="alert alert-warning text-center">Encara no hi ha cap pressupost guardat</div> -->
+<div *ngIf="budgetList.length === 0; else table" class="alert alert-warning text-center">Encara no hi ha cap pressupost guardat</div>
 
-
+<ng-template #table>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -21,4 +21,6 @@
       </tr>
     </tbody>
   </table>
+</ng-template>
+
 

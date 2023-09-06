@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { PriceOfServicesService } from '../services/priceOfServices.service';
 import { PriceOfServicesInterface } from '../interface/price.interface';
 import { TotalBudgetPriceService } from '../services/totalBudgetPrice.service';
+import { SelectedServiceService } from '../services/selectedService.service';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class HomeComponent {
   public showPanell: boolean = false;
   public webSelectedService = 'Fer una pàgina web';
   public showButtonForBack: boolean = false;
+  //esto lo pasamos en el <app-home-save-form></app-hom-save-form> con el [selectionServices]="selectionServices"
+  public selectionServices: string[]=[];
 
 //esto es para que se actualice el precio del panel a tiempo real
   get totalBudgetPrice():number{
@@ -22,8 +25,9 @@ export class HomeComponent {
     return this.totalServicePrice.getTotalBudgetPrice();
   }
 
-
-  constructor(public priceOfServices: PriceOfServicesService, private totalServicePrice: TotalBudgetPriceService) { }
+  constructor(public priceOfServices: PriceOfServicesService,
+    private totalServicePrice: TotalBudgetPriceService,
+    private selectedService: SelectedServiceService) { }
 
   addPrice(price: number, selected: PriceOfServicesInterface) {
 
@@ -38,8 +42,7 @@ export class HomeComponent {
     this.totalServicePrice.addTotalServicePrice(this.totalPrice);
   }
 
-  selectedService(service: PriceOfServicesInterface) {
-    // service:PriceOfServicesInterface
+  selectedWebService(service: PriceOfServicesInterface) {
     if (this.webSelectedService !== service.name) return;
 
     if (this.showPanell) {
@@ -49,6 +52,21 @@ export class HomeComponent {
       return;
     }
     this.showPanell = true;
+  }
+
+  toggleSelection(serviceName: string):void{
+    this.selectedService.toggleSelection(serviceName);
+
+    //actualizar el array teniendo en cuenta si esta seleccionado o no
+    if(this.selectedService.isSelected(serviceName)){
+      this.selectionServices.push(serviceName); //lo añadimos al array
+    } else{
+      this.selectionServices = this.selectionServices.filter(service => service !== serviceName);//lo eliminamos del array
+    }
+  }
+
+  isSelected(serviceName: string):boolean{
+    return this.selectedService.isSelected(serviceName);
   }
 
   showBackButton():void{
