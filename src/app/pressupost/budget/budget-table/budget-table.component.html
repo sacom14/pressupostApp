@@ -1,6 +1,11 @@
 <div *ngIf="budgetList.length === 0; else table" class="alert alert-warning text-center">Encara no hi ha cap pressupost guardat</div>
 
 <ng-template #table>
+  <div class="col text-center">
+    <button class="btn btn-light m-2" (click)="aphabeticalOrder()">Ordre alfabètic</button>
+    <button class="btn btn-light m-2" (click)="dataOrder()">Ordre per data</button>
+    <button class="btn btn-light m-2" (click)="resetOrder()">Reiniciar ordre</button>
+  </div>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -9,6 +14,7 @@
         <th>Client/a</th>
         <th>Serveis</th>
         <th>Preu final</th>
+        <th>Data</th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +24,7 @@
         <td>{{budget.nameOfClient}}</td>
         <td>{{budget.serveis}}</td>
         <td>{{budget.totalBudget}} €</td>
+        <td>{{budget.date}}</td>
       </tr>
     </tbody>
   </table>

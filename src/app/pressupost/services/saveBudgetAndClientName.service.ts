@@ -40,9 +40,16 @@ export class SaveBudgetAndClientNameService {
     return '';
   }
 
+  //obtener fecha by Index
+  getDateByIndex(index:number):string{
+    if(index<this.savedBudgetsAndClientsName.length){
+      return this.savedBudgetsAndClientsName[index].date;
+    }
+    return '';
+  }
+
   //notificacion de cambios a los que pueden acceder a este metodo
   notifyDataChanged(){
     this.dataChanged.emit()
   }
-
 }

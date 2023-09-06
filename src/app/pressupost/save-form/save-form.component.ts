@@ -31,20 +31,29 @@ export class SaveFormComponent {
 
   ) { }
 
+
   saveBudget() {
     if (this.myForm.valid) {
       const budgetName: string = this.myForm.get('budgetName')?.value;
+      const formattedBudgetname = this.capitalizeFirstLetter(budgetName);//primera letra mayúscula
+
       const clientName: string = this.myForm.get('clientName')?.value;
+      const formattedClientName = this.capitalizeFirstLetter(clientName); //primera letra mayúscula
+
       const serveis: string[] = this.selectionServices
       const totalPrice: number = this.totalServicePrice.getTotalBudgetPrice().valueOf();     //Guardar el precio final en el array
+      const actuallyDate: string = new Date().toLocaleDateString() //establecer la fecha actual
 
       //agregar el objeto al array newBudgetAndCleintName
       const newBudgetClient: BudgetInterface = {
-        nameOfBudget: budgetName,
-        nameOfClient: clientName,
+        nameOfBudget: formattedBudgetname,
+        nameOfClient: formattedClientName,
         serveis: serveis,
-        totalBudget: totalPrice
+        totalBudget: totalPrice,
+        date: actuallyDate
       };
+
+      console.log(newBudgetClient.date);
 
       //Guardar los datos en el servicio
       this.saveBudgetAndClientName.saveBudgetData([newBudgetClient]);
@@ -58,6 +67,12 @@ export class SaveFormComponent {
       //emitir evento
       this.newBudgetAndClientNameEvent.emit(this.saveBudgetAndClientName.getSavedBudgets());
 
-    }
-  }
+    };
+  };
+  //hacer que la primera letra sea mayúscula y las otras minúsculas
+  capitalizeFirstLetter(word: string): string {
+
+    return word.charAt(0).toUpperCase() + word.slice(1).toLocaleLowerCase();
+
+  };
 }
