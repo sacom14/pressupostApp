@@ -16,7 +16,7 @@ import { PressupostModule } from './pressupost/pressupost.module';
     BrowserModule,
     AppRoutingModule,
     PressupostModule,
-    RouterModule
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

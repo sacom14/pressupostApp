@@ -1,8 +1,8 @@
-import { FormControl } from '@angular/forms';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TotalBudgetPriceService } from './../services/totalBudgetPrice.service';
+import { SharedBudgetUrlServiceService } from '../services/sharedBudgetUrlService.service';
 
 
 @Component({
@@ -22,18 +22,30 @@ export class PanellComponent {
     lenguage: ['', [Validators.required, Validators.min(1), Validators.max(20)]]
   })
 
-  constructor(private fb: FormBuilder, private totalBudgetPriceService: TotalBudgetPriceService) { }
+  constructor(private fb: FormBuilder,
+    private totalBudgetPriceService: TotalBudgetPriceService,
+    private sharedBudgetServiceService: SharedBudgetUrlServiceService) { }
+
   onSubmit() {
     this.myForm.markAllAsTouched();
 
     if (this.myForm.valid) {
       const pages:number = this.myForm.get('page')!.value;
-      const lenguages:number = this.myForm.get('lenguage')!.value;
+      const languages:number = this.myForm.get('lenguage')!.value;
 
-      this.totalBudgetPriceService.addtTotalWebPrice(pages, lenguages);
+      //añadir precir de las paginas e idiomas
+      this.totalBudgetPriceService.addtTotalWebPrice(pages, languages);
+
+      //actualizar las propiedasdes de pages e idiomas
+      this.sharedBudgetServiceService.nPages = pages;
+      this.sharedBudgetServiceService.nLenguages = languages;
+
+      //llamar a la función que actualizara y generará la url
+      this.sharedBudgetServiceService.updatePageLanguagesAndGenerateBudgetUrl(pages, languages);
 
     } else{
       this.totalBudgetPriceService.addtTotalWebPrice(0, 0);
+      this.sharedBudgetServiceService.updatePageLanguagesAndGenerateBudgetUrl(0,0)
     }
   }
 
@@ -52,4 +64,5 @@ export class PanellComponent {
       field.setValue(Math.max(currentValue -1,1));
     }
   }
+
 }
