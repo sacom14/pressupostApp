@@ -1,38 +1,39 @@
-<div *ngIf="budgetList.length === 0; else table" class="alert alert-warning text-center">Encara no hi ha cap pressupost guardat</div>
+<div *ngIf="budgetList.length === 0; else table" class="alert alert-warning text-center">Encara no hi ha cap pressupost
+  guardat</div>
 
 <ng-template #table>
-  <app-home-budgetTable-searchBox
-  class="m-1"
-  (onValue)="onSearchTermChange($event)"
-  placeholder="Buscar per nom del pressupost">
-</app-home-budgetTable-searchBox>
+  <app-home-budgetTable-searchBox (onValue)="onSearchTermChange($event)"
+  [showMessageNoCoincidence]="showMessageNoCoincidence"
+    placeholder="Buscar per nom del pressupost">
+  </app-home-budgetTable-searchBox>
   <div class="col text-center">
     <button class="btn btn-light m-2" (click)="aphabeticalOrder()">Ordre alfabètic</button>
     <button class="btn btn-light m-2" (click)="dataOrder()">Ordre per data</button>
     <button class="btn btn-light m-2" (click)="resetOrder()">Reiniciar ordre</button>
   </div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Pressupost</th>
-        <th>Client/a</th>
-        <th>Serveis</th>
-        <th>Preu final</th>
-        <th>Data</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let budget of budgetList; let i = index">
-        <td>{{i+1}}</td>
-        <td>{{budget.nameOfBudget}}</td>
-        <td>{{budget.nameOfClient}}</td>
-        <td>{{budget.serveis}}</td>
-        <td>{{budget.totalBudget}} €</td>
-        <td>{{budget.date}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table class="table table-hover ">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Pressupost</th>
+          <th>Client/a</th>
+          <th>Serveis</th>
+          <th>Preu final</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let budget of budgetList; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{budget.nameOfBudget}}</td>
+          <td>{{budget.nameOfClient}}</td>
+          <td>{{budget.serveis}}</td>
+          <td>{{budget.totalBudget}} €</td>
+          <td>{{budget.date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </ng-template>
-
-

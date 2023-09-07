@@ -9,6 +9,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class BudgetTableSearchBoxComponent {
 
   @Input()
+  public showMessageNoCoincidence: boolean = false;
+
+  @Input()
   public placeholder: string = '';
 
   @Output()
@@ -18,5 +21,6 @@ export class BudgetTableSearchBoxComponent {
     const value = (event.target as HTMLInputElement).value;
     this.onValue.emit(value)
   }
+
 
 }

@@ -1,8 +1,12 @@
-<input type="text"
+<input
+type="text"
 [placeholder]="placeholder"
 class="form-control"
 (input)="onInputChange($event)"
 (keyup-enter)="onInputChange($event)"
 #txtInput>
+<div *ngIf="showMessageNoCoincidence" class="d-flex justify-content-center text-danger">
+<p>No s'ha trobat cap coincidencia</p>
+</div>
 
 

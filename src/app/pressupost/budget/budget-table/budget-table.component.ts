@@ -16,6 +16,9 @@ export class BudgetTableComponent {
   public originalBudgetList: BudgetInterface[] = [];//sirve para guardar la lista original
   public searchTerm: string = ''; //el término de búsqueda
 
+  @Input() public showMessageNoCoincidence:boolean = false; //iniciamos en false para que no se muestre por pantalla
+
+
   constructor(private budgetAndClientName: SaveBudgetAndClientNameService) { }
 
   ngOnInit(): void {
@@ -34,13 +37,14 @@ export class BudgetTableComponent {
 
   onSearchTermChange(searchTerm:string):void{
     this.searchTerm =searchTerm;
-    this.searchByBudgetOrClient();
+    this.searchByBudget();
   }
 
   //botó per buscar en el serarchBox
-  searchByBudgetOrClient(): void {
+  searchByBudget(): void {
     if (this.searchTerm.trim() === '') {
       this.budgetList = [...this.originalBudgetList];
+      this.showMessageNoCoincidence = false;
 
     } else {
       const searchTerm = this.searchTerm.toLocaleLowerCase();
@@ -49,12 +53,20 @@ export class BudgetTableComponent {
       if (filteredList.length === 0){
         //si ya no queda resultados
         this.resetOrder();
+        this.showMessageNoCoincidence = true;
       } else{
         this.budgetList = filteredList;
+        this.showMessageNoCoincidence = false;
       }
     };
-
   }
+
+  // private checkNoCoincidence():boolean{
+  //   const searchTherm = this.searchTerm.toLocaleLowerCase();
+  //   return !this.budgetList.some(
+  //     budget => budget.nameOfBudget.toLocaleLowerCase().includes(searchTherm)
+  //   );
+  // }
 
   //botones para ordenar la lista
   aphabeticalOrder(): void {
